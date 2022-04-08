@@ -60,6 +60,8 @@ export async function fetchDSLStatus() {
     };
 }
 
+export type DSLStatus = Awaited<ReturnType<typeof fetchDSLStatus>>;
+
 export async function fetchTrafficStatistics() {
     const { data } = await client.post<string>('/cgi?1&5', payloads.trafficStatistics);
 
@@ -89,3 +91,6 @@ export async function fetchTrafficStatistics() {
 
     return entries;
 }
+
+export type TrafficStatistics = Awaited<ReturnType<typeof fetchTrafficStatistics>>;
+export type TrafficStatisticsEntry = TrafficStatistics[number];
