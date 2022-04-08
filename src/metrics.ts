@@ -1,5 +1,5 @@
 
-import { Registry, Counter, Gauge } from 'prom-client';
+import { Registry, Counter, Gauge, collectDefaultMetrics } from 'prom-client';
 import { DSLStatus, fetchDSLStatus, fetchTrafficStatistics, TrafficStatistics } from './router-api';
 
 export const register = new Registry();
@@ -311,3 +311,5 @@ async function fetchData() {
         });
     }
 }
+
+collectDefaultMetrics({ register });
