@@ -1,13 +1,17 @@
-import { fetchDSLStatus, fetchTrafficStatistics } from './router-api';
+import express from 'express';
+import { register } from './metrics';
 
-async function main() {
-    console.info('fetching data...');
-    const status = await fetchDSLStatus();
-    const statistics = await fetchTrafficStatistics();
-    console.info('fetched successfully');
+const server = express();
 
-    console.log(status);
-    console.log(statistics);
-}
+server.get('/metrics', async (_, res) => {
+    try {
+        res.set('Content-Type', register.contentType);
+        res.end(await register.metrics());
+    } catch (error) {
+        console.error(error);
+        res.status(500).end(`${error}`);
+    }
+});
 
-main().catch(console.error);
+const port = process.env.PORT ?? 19001;
+server.listen(port, () => console.log(`Listening on port ${port}\nMetrics available at http://localhost:${port}/metrics`));
