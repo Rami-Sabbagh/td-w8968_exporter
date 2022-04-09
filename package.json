@@ -1,6 +1,6 @@
 {
   "name": "td-w8968_exporter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Prometheus exporter for TP-Link TD-W9868 home router",
   "main": "dist/index.js",
   "repository": "https://github.com/Rami-Sabbagh/td-w8968_exporter/",
