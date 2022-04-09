@@ -1,4 +1,6 @@
 import express from 'express';
+
+import options from './options';
 import { register } from './metrics';
 
 const server = express();
@@ -13,5 +15,5 @@ server.get('/metrics', async (_, res) => {
     }
 });
 
-const port = process.env.PORT ?? 19001;
+const port = options.metricsPort;
 server.listen(port, () => console.log(`Listening on port ${port}\nMetrics available at http://localhost:${port}/metrics`));
