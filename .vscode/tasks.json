@@ -17,6 +17,16 @@
 				"showReuseMessage": false,
 				"clear": true,
 			}
+		},
+		{
+			"type": "docker-build",
+			"label": "docker: build",
+			"platform": "node",
+			"group": "build",
+			"dockerBuild": {
+				"context": "${workspaceFolder}",
+				"tag": "td-w8968_exporter:latest",
+			}
 		}
 	]
 }
