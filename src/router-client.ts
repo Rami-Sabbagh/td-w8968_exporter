@@ -12,6 +12,7 @@ const client = axios.create({
         'Referer': `http://${options.routerAddress}/`,
     },
     responseType: 'text',
+    timeout: 10,
 });
 
 export default client;
