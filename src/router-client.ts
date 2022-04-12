@@ -7,7 +7,7 @@ const authorizationToken = `Basic ${encodeBase64(`${options.adminUsername}:${opt
 
 const client = axios.create({
     baseURL: `http://${options.routerAddress}/`,
-    timeout: options.routerTimeout,
+    timeout: options.routerTimeout * 1_000,
     headers: {
         'Cookie': `Authorization=${authorizationToken}`,
         'Referer': `http://${options.routerAddress}/`,
