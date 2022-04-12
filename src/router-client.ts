@@ -7,12 +7,12 @@ const authorizationToken = `Basic ${encodeBase64(`${options.adminUsername}:${opt
 
 const client = axios.create({
     baseURL: `http://${options.routerAddress}/`,
+    timeout: options.routerTimeout,
     headers: {
         'Cookie': `Authorization=${authorizationToken}`,
         'Referer': `http://${options.routerAddress}/`,
     },
     responseType: 'text',
-    timeout: 10,
 });
 
 export default client;
