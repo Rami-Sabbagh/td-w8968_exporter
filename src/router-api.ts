@@ -4,9 +4,13 @@ import path from 'path';
 import client from './router-client';
 import { parseIntFromRejexCapture, formatIP } from './utilities';
 
+function loadPayload(name: string) {
+    return fs.readFileSync(path.resolve(__dirname, `../data/${name}.json`), 'utf8').replace(/([^\r])\n/g, '$1\r\n');
+}
+
 const payloads = {
-    dslStatus: fs.readFileSync(path.resolve(__dirname, '../data/dsl-status.txt'), 'utf8'),
-    trafficStatistics: fs.readFileSync(path.resolve(__dirname, '../data/traffic-statistics.txt'), 'utf8'),
+    dslStatus: loadPayload('dsl-status'),
+    trafficStatistics: loadPayload('traffic-statistics'),
 };
 
 export async function fetchDSLStatus() {
