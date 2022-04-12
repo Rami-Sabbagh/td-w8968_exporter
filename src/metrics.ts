@@ -11,8 +11,8 @@ let cachedTrafficStatistics: TrafficStatistics | undefined = undefined;
 
 async function fetchData() {
     if (new Date().valueOf() - lastFetched >= 1_000) {
-        cachedDSLStatus = await fetchDSLStatus().catch(() => undefined);
-        cachedTrafficStatistics = await fetchTrafficStatistics().catch(() => undefined);
+        cachedDSLStatus = await fetchDSLStatus().catch(console.warn) ?? undefined;
+        cachedTrafficStatistics = await fetchTrafficStatistics().catch(console.warn) ?? undefined;
 
         lastFetched = new Date().valueOf();
     }
