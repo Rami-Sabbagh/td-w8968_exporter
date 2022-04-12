@@ -5,7 +5,7 @@ import client from './router-client';
 import { parseIntFromRejexCapture, formatIP } from './utilities';
 
 function loadPayload(name: string) {
-    return fs.readFileSync(path.resolve(__dirname, `../data/${name}.json`), 'utf8').replace(/([^\r])\n/g, '$1\r\n');
+    return fs.readFileSync(path.resolve(__dirname, `../data/${name}.txt`), 'utf8').replace(/([^\r])\n/g, '$1\r\n');
 }
 
 const payloads = {
